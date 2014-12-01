@@ -53,3 +53,5 @@ gem "guard-rspec", group: [:test, :development]
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'pry', group: [:development, :test]
