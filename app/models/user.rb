@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   enum role: {  plain:  0,
                 admin:  1,
-                yoda:   2 } 
+                yoda:   2 }
 
   has_many :comments
   validates :username, uniqueness: true
