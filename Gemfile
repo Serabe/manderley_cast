@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.1'
+gem 'rails', '4.1.8'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -24,8 +24,9 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'active_model_serializers', '~> 0.8.2'
+gem 'pundit', '~> 0.3.0'
+gem 'devise', '~> 3.4.1'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
