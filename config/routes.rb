@@ -1,4 +1,5 @@
 Manderley::Application.routes.draw do
+  devise_for :users
   resources :movies do
     resources :comments, shallow: true
     get "cast/new", to: 'movies#new_cast', as: :new_cast
