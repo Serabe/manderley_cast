@@ -44,8 +44,12 @@
 <%= render @movie.comments %>
 
 <% if policy(@movie.comments.build).create? %>
-  <h4>Add a comment:</h4>
+<div>
+<button id="comment_form_button">Show form</button>
+<div id='comment_form'> <h4>Add a comment:</h4>
   <%= render 'comments/form' %>
+</div>
+</div>
 <% end %>
 
 <%= link_to 'Add cast', movie_new_cast_path(@movie) %> |

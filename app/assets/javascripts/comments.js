@@ -1,2 +1,10 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+jQuery(function($){
+  $('#comment_form_button').click(function() {
+    $(this).effect('explode');
+    var $commentForm = $('#comment_form');
+
+    $commentForm.show(200, function() {
+      $commentForm.effect('pulsate');
+    });
+  });
+});
