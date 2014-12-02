@@ -43,7 +43,7 @@
 <h4>Comments</h4>
 <%= render @movie.comments %>
 
-<% if user_signed_in? %>
+<% if policy(@movie.comments.build).create? %>
   <h4>Add a comment:</h4>
   <%= render 'comments/form' %>
 <% end %>

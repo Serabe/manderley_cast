@@ -8,6 +8,8 @@ class CommentsController < ApplicationController
     @comment = @movie.comments.build comment_params
     @comment.user = current_user
 
+    authorize @comment
+
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @movie, notice: 'Comment was successfully created.' }
