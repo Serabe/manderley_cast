@@ -1,14 +1,14 @@
 class MoviePolicy < ApplicationPolicy
   def create?
-    user.admin? || user.yoda?
+    user.try(:admin?) || user.try(:yoda?)
   end
 
   def update?
-    user.admin? || user.yoda?
+    user.try(:admin?) || user.try(:yoda?)
   end
 
   def destroy?
-    user.yoda? && record.comments.empty?
+    user.try(:yoda?) && record.comments.empty?
   end
 
   class Scope < Scope
