@@ -4,6 +4,10 @@ class CommentPolicy < ApplicationPolicy
     user
   end
 
+  def update?
+    user == record.user
+  end
+
   class Scope < Scope
     def resolve
       scope

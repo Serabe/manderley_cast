@@ -1,8 +1,20 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :destroy]
+  before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :set_movie, only: [:index, :new, :create, :destroy]
   before_action :authenticate_user!, except: [:index]
 
+  def edit
+    authorize @comment
+  end
+
+  def update
+    authorize @comment
+    if @comment.update comment_params
+      redirect_to movie_path(@comment.movie)
+    else
+      render action: 'edit'
+    end
+  end
 
   def create
     @comment = @movie.comments.build comment_params
