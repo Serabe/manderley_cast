@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters,
             if: :devise_controller?
 
+  rescue_from 'Pundit::NotAuthorizedError' do |exception|
+    flash[:error] = "No, no, no"
+    redirect_to root_path
+  end
+
   private
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :email
