@@ -1,5 +1,34 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy, :new_cast, :create_cast]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy, :new_cast, :create_cast, :up, :down]
+
+
+  def up
+    vote =  Vote.user(current_user)
+                .movie(@movie)
+                .find_or_initialize_by({})
+
+    vote.liked
+
+    authorize vote, :save?
+
+    vote.save
+
+    redirect_to movie_path(@movie)
+  end
+
+  def down
+    vote =  Vote.user(current_user)
+                .movie(@movie)
+                .find_or_initialize_by({})
+
+    vote.disliked
+
+    authorize vote, :save?
+
+    vote.save
+
+    redirect_to movie_path(@movie)
+  end
 
   # GET /movies
   # GET /movies.json
