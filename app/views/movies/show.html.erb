@@ -41,9 +41,9 @@
 
 <% if policy(Vote.user(current_user).movie(@movie).find_or_initialize_by({})).save? %>
   <div id="voting_system">
-    <%= link_to "I liked it!", movie_thumbs_up_path(@movie) %>
+    <%= link_to "I liked it!", movie_thumbs_up_path(@movie), method: :post %>
     |
-    <%= link_to "I didn't like it!", movie_thumbs_down_path(@movie) %>
+    <%= link_to "I didn't like it!", movie_thumbs_down_path(@movie), method: :post %>
   </div>
 <% end %>
 
