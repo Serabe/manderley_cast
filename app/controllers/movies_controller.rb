@@ -13,7 +13,15 @@ class MoviesController < ApplicationController
 
     vote.save
 
-    redirect_to movie_path(@movie)
+    respond_to do |format|
+      format.html do
+        if request.xhr?
+          render partial: 'ratings', layout: false
+        else
+          redirect_to movie_path(@movie)
+        end
+      end
+    end
   end
 
   def down
@@ -27,7 +35,15 @@ class MoviesController < ApplicationController
 
     vote.save
 
-    redirect_to movie_path(@movie)
+    respond_to do |format|
+      format.html do
+        if request.xhr?
+          render partial: 'ratings', layout: false
+        else
+          redirect_to movie_path(@movie)
+        end
+      end
+    end
   end
 
   # GET /movies
