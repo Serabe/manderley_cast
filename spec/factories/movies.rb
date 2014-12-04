@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :movie do
-    title "MyString"
+    sequence(:title) {|n| "Terminator #{n}" }
     year 1985
     duration 1
     synopsis "Once upon a time..."

@@ -12,8 +12,9 @@ class Movie < ActiveRecord::Base
               ->() { dislikes },
               class_name: 'Vote'
 
-    
+
     validates_presence_of :title
     validates_uniqueness_of :title
 
+    validates_presence_of :synopsis
 end
