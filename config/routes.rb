@@ -9,6 +9,12 @@ Manderley::Application.routes.draw do
     post "cast", to: 'movies#create_cast', as: :create_cast
   end
 
+  namespace :api do
+    resources :movies, only: [:index, :show]
+    resources :users, only: [:index, :show]
+    resources :comments, only: [:index, :show]
+  end
+
 
   resources :people, shallow: true
 
