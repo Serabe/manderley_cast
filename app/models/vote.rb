@@ -2,34 +2,20 @@ class Vote < ActiveRecord::Base
   belongs_to :movie
   belongs_to :user
 
-  scope :likes, ->() { where points: 1 }
-  scope :dislikes, ->() { where points: -1 }
-  scope :user, ->(user) { where user: user }
-  scope :movie, ->(movie) { where movie: movie }
+  scope :likes,    ->() { liked }
+  scope :dislikes, ->() { disliked }
+  scope :user,     ->(user) { where user: user }
+  scope :movie,    ->(movie) { where movie: movie }
+
+  enum rating: { liked:     1,
+                 disliked: -1,
+                 not_voted: 0  }
 
   def liked
-    self.points = 1
-  end
-
-  def liked!
-    liked
-    save
-  end
-
-  def liked?
-    points == 1
+    self.rating = :liked
   end
 
   def disliked
-    self.points = -1
-  end
-
-  def disliked!
-    disliked
-    save
-  end
-
-  def disliked?
-    points == -1
+    self.rating = :disliked
   end
 end

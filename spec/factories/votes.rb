@@ -1,14 +1,14 @@
 FactoryGirl.define do
   factory :vote do
     association :movie
-    points 0
+    rating :not_voted
 
     trait :liked do
-      points 1
+      rating :liked
     end
 
     trait :disliked do
-      points -1
+      rating :disliked
     end
   end
 end
