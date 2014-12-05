@@ -19,5 +19,24 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
+{
+  en: {
+    hello: "Hello world",
+    activerecord: {
+      models: {
+        movie: {
+          one: "Movi",
+          other: "Movis"
+        }
+      },
+
+      attributes: {
+        movie: {
+          title: "The titulón",
+          year: "When salió",
+          synopsis: "De what va"
+        }
+      }
+    }
+  }
+}

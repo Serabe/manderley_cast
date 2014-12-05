@@ -1,22 +1,24 @@
 Manderley::Application.routes.draw do
   devise_for :users
-  resources :movies do
-    resources :comments, shallow: true
 
-    post 'up', to: 'movies#up', as: :thumbs_up
-    post 'down', to: 'movies#down', as: :thumbs_down
-    get "cast/new", to: 'movies#new_cast', as: :new_cast
-    post "cast", to: 'movies#create_cast', as: :create_cast
+  scope '(:locale)' do
+    resources :movies do
+      resources :comments, shallow: true
+
+      post 'up', to: 'movies#up', as: :thumbs_up
+      post 'down', to: 'movies#down', as: :thumbs_down
+      get "cast/new", to: 'movies#new_cast', as: :new_cast
+      post "cast", to: 'movies#create_cast', as: :create_cast
+    end
+
+    namespace :api do
+      resources :movies, only: [:index, :show]
+      resources :users, only: [:index, :show]
+      resources :comments, only: [:index, :show]
+    end
+
+    resources :people, shallow: true
   end
-
-  namespace :api do
-    resources :movies, only: [:index, :show]
-    resources :users, only: [:index, :show]
-    resources :comments, only: [:index, :show]
-  end
-
-
-  resources :people, shallow: true
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
