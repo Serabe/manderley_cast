@@ -16,6 +16,10 @@ class Vote < ActiveRecord::Base
     save
   end
 
+  def liked?
+    points == 1
+  end
+
   def disliked
     self.points = -1
   end
@@ -23,5 +27,9 @@ class Vote < ActiveRecord::Base
   def disliked!
     disliked
     save
+  end
+
+  def disliked?
+    points == -1
   end
 end
